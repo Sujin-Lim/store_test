@@ -11,7 +11,7 @@ public class GuestWindow extends JFrame {
         setVisible(true);
         setResizable(true);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        setIconImage(new ImageIcon("D:\\workspace_IntelliJ_IDEA\\store\\onlineStore\\src\\com\\store\\image\\shop.png").getImage());
+        setIconImage(new ImageIcon("/image/shop.png").getImage());
     }
 
     private void initContainer(String title, int x, int y, int width, int height) {
