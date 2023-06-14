@@ -10,11 +10,11 @@ public class AdminLoginDialog extends JDialog {
     JTextField pwField, idField;
     public boolean isLogin = false;
 
-//    public static void main(String[] args) {
-//        JFrame jFrame = new JFrame();
-//        AdminLoginDialog adminLoginDialog = new AdminLoginDialog(jFrame,"");
-//        adminLoginDialog.setVisible(true);
-//    }
+    public static void main(String[] args) {
+        JFrame jFrame = new JFrame();
+        AdminLoginDialog adminLoginDialog = new AdminLoginDialog(jFrame,"");
+        adminLoginDialog.setVisible(true);
+    }
 
     public AdminLoginDialog(JFrame frame, String str) {
         super(frame, "관리자 로그인", true);

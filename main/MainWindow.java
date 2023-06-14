@@ -16,6 +16,7 @@ public class MainWindow extends JFrame {
     static JPanel mMenuPanel, mPagePanel;
 
     public MainWindow(String title, int x, int y, int width, int height) {
+        mCart = new Cart();
         initContainer(title, x, y, width, height);
         initMenu();
         setVisible(true);
@@ -39,7 +40,7 @@ public class MainWindow extends JFrame {
         add(mPagePanel);
         this.addWindowListener(new WindowAdapter() {
             @Override
-            public void windowClosed(WindowEvent event) {
+            public void windowClosed(WindowEvent e) {
                 setVisible(false);
                 new GuestWindow("고객 정보 입력", 0, 0, 1000, 750);
             }
@@ -106,14 +107,13 @@ public class MainWindow extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 mPagePanel.removeAll();
                 BookInit.init();
-                mPagePanel.add(
-                        "장바구니에 추가하기", new CartAddItemPage(mPagePanel, mCart));
+                mPagePanel.add("장바구니에 추가하기", new CartAddItemPage(mPagePanel, mCart));
                 mPagePanel.revalidate();
                 mPagePanel.repaint();
             }
         });
         JButton bt5 = new JButton(
-                "장바구니 항목 수량 변경", new ImageIcon("./image/5.png"));
+                "장바구니 항목 수량 변경", new ImageIcon("image/5.png"));
         bt5.setFont(ft);
         mMenuPanel.add(bt5);
         JButton bt6 = new JButton(
@@ -132,13 +132,13 @@ public class MainWindow extends JFrame {
                     if (mCart.mCartCount == 0)
                         JOptionPane.showMessageDialog(bt6,
                                 "장바구니에 항목이 없습니다");
-                    else if (cartList.mSelectRow == 0) // Debugging
+                    else if (cartList.mSelectRow == -1) // Debugging
                         JOptionPane.showMessageDialog(bt6,
                                 "장바구니에서 삭제할 항목을 선택하세요");
                     else {
                         mCart.removeCart(cartList.mSelectRow);
                         // 장바구니에서 선택 항목 삭제하기
-                        cartList.mSelectRow = 0 ; // Debugging
+                        cartList.mSelectRow = -1 ; // Debugging
                     }
                 }
                 mPagePanel.add(
@@ -157,8 +157,8 @@ public class MainWindow extends JFrame {
                             "장바구니에 항목이 없습니다", "주문처리", JOptionPane.ERROR_MESSAGE);
                 else {
                     mPagePanel.removeAll();
-//                    mPagePanel.add(
-//                            "주문 배송지", new CartShippingPage(mPagePanel, mCart));
+                    mPagePanel.add(
+                            "주문 배송지", new CartShippingPage(mPagePanel, mCart));
                     mPagePanel.revalidate();
                     mPagePanel.repaint();
                 }
@@ -239,8 +239,7 @@ public class MainWindow extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 mPagePanel.removeAll();
                 BookInit.init();
-                mPagePanel.add(
-                        "장바구니에 추가하기", new CartAddItemPage(mPagePanel, mCart));
+                mPagePanel.add("장바구니에 추가하기", new CartAddItemPage(mPagePanel, mCart));
                 add(mPagePanel);
                 mPagePanel.revalidate();
             }

@@ -161,16 +161,16 @@ public class AdminPage extends JPanel {
         });
     }
 
-//    public static void main(String[] args) {
-//        JFrame frame = new JFrame();
-//        frame.setBounds(0, 150, 1000, 750);
-//        frame.setLayout(null);
-//        JPanel mPagePanel = new JPanel();
-//        mPagePanel.setBounds(0, 150, 1000, 750);
-//        frame.add(mPagePanel);
-//        mPagePanel.add("", new AdminPage(mPagePanel));
-//        frame.setVisible(true);
-//        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-//    }
+    public static void main(String[] args) {
+        JFrame frame = new JFrame();
+        frame.setBounds(0, 150, 1000, 750);
+        frame.setLayout(null);
+        JPanel mPagePanel = new JPanel();
+        mPagePanel.setBounds(0, 150, 1000, 750);
+        frame.add(mPagePanel);
+        mPagePanel.add("", new AdminPage(mPagePanel));
+        frame.setVisible(true);
+        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+    }
 
 }

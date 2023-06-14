@@ -1,5 +1,7 @@
 package com.store.main;
 
+import com.store.member.UserInit;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -11,7 +13,7 @@ public class GuestWindow extends JFrame {
         setVisible(true);
         setResizable(true);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        setIconImage(new ImageIcon("/image/shop.png").getImage());
+        setIconImage(new ImageIcon("./image/shop.png").getImage());
     }
 
     private void initContainer(String title, int x, int y, int width, int height) {
@@ -24,7 +26,7 @@ public class GuestWindow extends JFrame {
         setLocation((screenSize.width - 1000) / 2, (screenSize.height - 750) / 2);
         JPanel userPanel = new JPanel();
         userPanel.setBounds(0, 100, 1000, 256);
-        ImageIcon imageIcon = new ImageIcon("D:\\workspace_IntelliJ_IDEA\\store\\onlineStore\\src\\com\\store\\image\\user.png");
+        ImageIcon imageIcon = new ImageIcon("./image/user.png");
         imageIcon.setImage(imageIcon.getImage().getScaledInstance(160, 160, Image.SCALE_SMOOTH));
         JLabel userLabel = new JLabel(imageIcon);
         userPanel.add(userLabel);
@@ -57,7 +59,7 @@ public class GuestWindow extends JFrame {
         JPanel buttonPanel = new JPanel();
         buttonPanel.setBounds(0, 500, 1000, 100);
         add(buttonPanel);
-        JLabel buttonLabel = new JLabel("쇼핑하기", new ImageIcon("D:\\workspace_IntelliJ_IDEA\\store\\onlineStore\\src\\com\\store\\image\\shop.png"), JLabel.LEFT);
+        JLabel buttonLabel = new JLabel("쇼핑하기", new ImageIcon("./image/shop.png"), JLabel.LEFT);
         buttonLabel.setFont(ft);
         JButton enterButton = new JButton();
         enterButton.add(buttonLabel);
@@ -69,10 +71,10 @@ public class GuestWindow extends JFrame {
                 message.setFont(ft);
                 if (nameField.getText().isEmpty() || phoneField.getText().isEmpty()) {
                     JOptionPane.showMessageDialog(enterButton, message, "고객 정보", JOptionPane.ERROR_MESSAGE);
-//                } else {
-//                    UserInit.init(nameField.getText(), Integer.parseInt(phoneField.getText()));
-//                    dispose();
-//                    new MainWindow("온라인 스토어", 0, 0, 1000, 750);
+                } else {
+                    UserInit.init(nameField.getText(), Integer.parseInt(phoneField.getText()));
+                    dispose();
+                    new MainWindow("온라인 스토어", 0, 0, 1000, 750);
                 }
             }
         });
